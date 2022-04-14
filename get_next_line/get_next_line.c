@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imarushe <imarushe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 14:06:44 by imarushe          #+#    #+#             */
-/*   Updated: 2022/04/06 15:37:39 by imarushe         ###   ########.fr       */
+/*   Updated: 2022/04/14 11:32:51 by imarushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_strlen(char *str)
 {
 	int	i;
 
-	i =0;
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);
@@ -62,7 +62,7 @@ char	*ft_strjoin(char *temp, char *buffer)
 	}
 	result[i + j] = '\0';
 	free(temp);
-	return(result);
+	return (result);
 }
 
 char	*ft_read(int fd, char *temp)
@@ -89,17 +89,17 @@ char	*ft_read(int fd, char *temp)
 	return (temp);
 }
 
-char *ft_get_line(char *temp)
+char	*ft_get_line(char *temp)
 {
-	int	i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	while (temp[i] && temp[i] != '\n')
 		i++;
 	if (temp[i] && temp[i] == '\n')
 		i++;
-	line  = malloc(sizeof(char) * i + 1);
+	line = malloc(sizeof(char) * i + 1);
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -117,10 +117,10 @@ char *ft_get_line(char *temp)
 	return (line);
 }
 
-char *ft_next(char *temp, char *line)
+char	*ft_next(char *temp, char *line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*result;
 
 	j = 0;
@@ -131,7 +131,7 @@ char *ft_next(char *temp, char *line)
 	}
 	result = malloc(sizeof(char) * (ft_strlen(temp) - ft_strlen(line) + 1));
 	if (!result)
-		return(NULL);
+		return (NULL);
 	i = ft_strlen(line);
 	while (temp[i + j])
 	{
@@ -163,12 +163,12 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
-	int	fd;
-	char *str;
+	int		fd;
+	char	*str;
 
 	fd = open("test.txt", O_RDONLY);
 	str = get_next_line(fd);
-	while(str[0])
+	while (str[0])
 	{
 		printf("%s", str);
 		free(str);
@@ -176,4 +176,4 @@ int	main(void)
 	}
 	free(str);
 	return (0);
-}c
+}

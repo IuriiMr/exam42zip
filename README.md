@@ -47,3 +47,4 @@ There is no way to know all of the tasks but all known listed below (Mar 2022):
   - g_diam
 
 But you can also add new tasks and improve solutions. Have fun!
+And don't forget to Press star button at the right upper corner... 
